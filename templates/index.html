@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Length Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔢 Token Length Checker</h1>
+            <p>Enter your text below to count the number of tokens</p>
+        </header>
+        
+        <main>
+            <form id="tokenForm" class="token-form">
+                <div class="form-group">
+                    <label for="textInput">Enter your text:</label>
+                    <textarea 
+                        id="textInput" 
+                        name="text" 
+                        placeholder="Type or paste your text here..."
+                        rows="8"
+                        required
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span> characters
+                    </div>
+                </div>
+                
+                <button type="submit" id="calculateBtn" class="btn btn-primary">
+                    <span class="btn-text">Calculate Tokens</span>
+                    <span class="btn-loading" style="display: none;">Calculating...</span>
+                </button>
+            </form>
+            
+            <div id="result" class="result-section" style="display: none;">
+                <div class="result-card">
+                    <h3>📊 Analysis Results</h3>
+                    <div class="result-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Token Count:</span>
+                            <span id="tokenCount" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Character Count:</span>
+                            <span id="characterCount" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="error" class="error-message" style="display: none;">
+                <span class="error-icon">⚠️</span>
+                <span id="errorText"></span>
+            </div>
+        </main>
+        
+        <footer>
+            <p>💡 Tip: Tokens are typically words separated by spaces and punctuation</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
