@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('tokenForm');
     const textInput = document.getElementById('textInput');
     const calculateBtn = document.getElementById('calculateBtn');
+    const clearBtn = document.getElementById('clearBtn');
     const resultSection = document.getElementById('result');
     const errorMessage = document.getElementById('error');
     const charCount = document.getElementById('charCount');
@@ -37,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Submit to server
         calculateTokens(text);
+    });
+
+    // Clear button handler
+    clearBtn.addEventListener('click', function() {
+        clearForm();
     });
 
     // Function to check if text is in English (basic validation)
@@ -114,6 +120,17 @@ document.addEventListener('DOMContentLoaded', function() {
         errorMessage.style.display = 'none';
     }
 
+    // Function to clear the form
+    function clearForm() {
+        textInput.value = '';
+        charCount.textContent = '0';
+        hideResults();
+        textInput.focus();
+        
+        // Reset textarea height
+        textInput.style.height = 'auto';
+    }
+
     // Add some helpful features
     
     // Auto-resize textarea
@@ -132,10 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Clear form with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            textInput.value = '';
-            charCount.textContent = '0';
-            hideResults();
-            textInput.focus();
+            clearForm();
         }
     });
 

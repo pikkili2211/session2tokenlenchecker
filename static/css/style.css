@@ -91,6 +91,12 @@ textarea:focus {
 }
 
 /* Button styles */
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -119,6 +125,22 @@ textarea:focus {
 }
 
 .btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #8b4513;
+    border: 2px solid #fcb69f;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(252, 182, 159, 0.3);
+    background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
+}
+
+.btn-secondary:active {
     transform: translateY(0);
 }
 
@@ -265,6 +287,10 @@ footer p {
 @media (max-width: 480px) {
     header h1 {
         font-size: 1.8rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
     }
     
     .btn {

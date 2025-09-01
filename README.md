@@ -33,6 +33,25 @@ A simple Flask web application that counts tokens in text input. This tool provi
    ```
    http://localhost:5000
    ```
+   
+   **For network access**, use your Ubuntu machine's IP address:
+   ```
+   http://YOUR_UBUNTU_IP:5000
+   ```
+   
+   To find your machine's IP address, run:
+   
+   **On Ubuntu/Linux:**
+   ```bash
+   ip addr show
+   # or
+   hostname -I
+   ```
+   
+   **On macOS:**
+   ```bash
+   ifconfig | grep "inet " | grep -v 127.0.0.1
+   ```
 
 3. Enter your text in the textarea and click "Calculate Tokens"
 
@@ -110,6 +129,24 @@ To run in development mode with auto-reload:
 export FLASK_ENV=development
 python app.py
 ```
+
+## Production Deployment
+
+⚠️ **Security Warning**: The current configuration (`host='0.0.0.0'`) makes the app accessible from any network interface. For production use:
+
+1. **Use a production WSGI server** like Gunicorn:
+   ```bash
+   pip install gunicorn
+   gunicorn -w 4 -b 0.0.0.0:5000 app:app
+   ```
+
+2. **Set up a reverse proxy** (nginx/Apache) for better security
+
+3. **Configure firewall rules** to restrict access
+
+4. **Use HTTPS** for secure connections
+
+5. **Set `debug=False`** in production
 
 ## License
 
